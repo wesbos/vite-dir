@@ -6,8 +6,8 @@ import argv from 'cli-argparse';
 
 const args = argv(process.argv);
 
+console.log(`[${pkg.name}] ${pkg.version}`);
 if (args.flags.version) {
-  console.log(`[${pkg.name}] ${pkg.version}`);
   process.exit(0);
 }
 

@@ -6,6 +6,9 @@
   "bin": {
     "vite-dir": "go.js"
   },
+  "scripts": {
+    "start": "node go.js"
+  },
   "eslintConfig": {
     "extends": "wesbos"
   },
