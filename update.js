@@ -8,34 +8,50 @@ const VERSION = pkg.version;
 const packageName = pkg.name;
 
 export const spinner = ora();
+const rawProgramArgs = process.argv.slice(2);
 
 export async function update() {
   spinner.start();
   spinner.text = 'Ensuring latest version';
   const latestVer = await latestVersion(packageName);
-  if (compareVersions(VERSION, latestVer) === -1 || true) {
-    spinner.text = (
-      `Current version of [${packageName}] is [${chalk.cyan(
-        VERSION
-      )}] is lower than the latest available version [${chalk.yellow(
-        latestVer
-      )}]. Updating ${packageName} with @latest...`
-    );
-    const rawProgramArgs = process.argv.slice(2);
+  if (compareVersions(VERSION, latestVer) === -1) {
+
+    console.log(`Current version of [${packageName}] is [${chalk.cyan(
+      VERSION
+    )}] is lower than the latest available version [${chalk.yellow(
+      latestVer
+    )}]. Updating ${packageName} with @latest...`);
     await execa(
       'npx',
-      [`${packageName}@latest`, '--no-check-latest', '--silent', ...rawProgramArgs],
-      {
-        env: {
-          npm_config_yes: 'true', // https://github.com/npm/cli/issues/2226#issuecomment-732475247
-        },
-      }
+      [
+        `${packageName}@latest`,
+        '--no-check-latest',
+        '--start',
+        ...rawProgramArgs,
+      ],
+      { env: { npm_config_yes: 'true' } }
     );
     spinner.text = `Updated ${packageName} to [${chalk.green(latestVer)}]`;
     spinner.clear();
   } else {
     // Same version. We are running the latest one!
+    console.log(
+      `\nAlready on the latest version - [${chalk.yellow(latestVer)}]. Starting`
+    );
     spinner.stop();
     // spinner.clear();
   }
+}
+
+export async function runLatest() {
+  execa(
+    'npx',
+    [
+      `${packageName}@latest`,
+      '--no-check-latest',
+      '--start',
+      ...rawProgramArgs,
+    ],
+    { env: { npm_config_yes: 'true' } }
+  ).stdout.pipe(process.stdout);
 }
