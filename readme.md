@@ -16,7 +16,7 @@ As an npx command:
 npx vite-dir
 ```
 
-Or globally installed:
+or a Global install:
 
 ```bash
 npm i -g vite-dir
