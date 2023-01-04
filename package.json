@@ -1,19 +1,24 @@
 {
   "name": "vite-dir",
   "version": "0.0.2",
-  "description": "",
+  "description": "Serve a directory with Vite",
   "type": "module",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
   "bin": {
-    "vite-dir": "bin/index.js"
+    "vite-dir": "go.js"
+  },
+  "eslintConfig": {
+    "extends": "wesbos"
   },
   "keywords": [],
   "author": "Wes Bos",
   "license": "MIT",
   "dependencies": {
+    "cli-argparse": "^1.1.2",
+    "suppress-experimental-warnings": "^1.1.2",
     "vite": "^4.0.4",
     "vite-plugin-list-directory-contents": "^1.4.3"
+  },
+  "devDependencies": {
+    "eslint-config-wesbos": "^3.1.5-beta.4"
   }
 }
