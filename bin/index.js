@@ -20,7 +20,7 @@ const server = parseServerFlags();
 console.log(server);
 
 // check for root
-const maybeRoot = process.argv[2];
+const maybeRoot = process.argv[2] || '';
 const root = maybeRoot.startsWith('--') ? process.cwd() : maybeRoot;
 
 const myConfig = defineConfig({
