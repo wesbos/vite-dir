@@ -16,7 +16,12 @@
   "author": "Wes Bos",
   "license": "MIT",
   "dependencies": {
+    "chalk": "^5.2.0",
     "cli-argparse": "^1.1.2",
+    "compare-versions": "^6.0.0-rc.1",
+    "execa": "^6.1.0",
+    "latest-version": "^7.0.0",
+    "ora": "^6.1.2",
     "suppress-experimental-warnings": "^1.1.2",
     "vite": "^4.0.4",
     "vite-plugin-list-directory-contents": "^1.4.3"

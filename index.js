@@ -3,8 +3,15 @@ import { directoryPlugin } from 'vite-plugin-list-directory-contents';
 // eslint-ignore-next-line
 import pkg from './package.json' assert { type: "json" };
 import argv from 'cli-argparse';
+import { spinner } from './update.js';
 
 const args = argv(process.argv);
+
+// Silent mode for updating, it doesnt run
+if(args.flags.silent) {
+  spinner.stop();
+  process.exit(0);
+}
 
 console.log(`[${pkg.name}] ${pkg.version}`);
 if (args.flags.version) {
@@ -33,10 +40,11 @@ const myConfig = defineConfig({
   },
 });
 
-async function start() {
+export async function start() {
+  spinner.text = 'Starting Vite Server...';
   const server = await createServer(myConfig);
   await server.listen();
+  spinner.clear();
+  spinner.succeed();
   server.printUrls();
 }
-
-start();
