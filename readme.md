@@ -10,7 +10,7 @@ Live reloading, typescript loading, CSS Parsing, all the good stuff vite gives y
 
 ## Usage
 
-Without installing anything:
+As an npx command:
 
 ```bash
 npx vite-dir
