@@ -1,6 +1,6 @@
 ## Vite Dir
 
-A shortcut command that runs `vite` dev server with[vite-plugin-list-directory-contents](https://www.npmjs.com/vite-plugin-list-directory-contents) so you get a live reloaded directory of files.
+A shortcut command that runs `vite` dev server with [vite-plugin-list-directory-contents](https://www.npmjs.com/vite-plugin-list-directory-contents) so you get a live reloaded directory of files.
 
 ## But, Why?
 
