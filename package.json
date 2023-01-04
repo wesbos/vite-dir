@@ -1,0 +1,19 @@
+{
+  "name": "vite-dir",
+  "version": "1.0.0",
+  "description": "",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "bin": {
+    "vite-dir": "bin/index.js"
+  },
+  "keywords": [],
+  "author": "Wes Bos",
+  "license": "MIT",
+  "dependencies": {
+    "vite": "^4.0.4",
+    "vite-plugin-list-directory-contents": "^1.4.3"
+  }
+}
