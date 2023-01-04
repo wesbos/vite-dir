@@ -30,7 +30,7 @@ export async function update() {
           npm_config_yes: 'true', // https://github.com/npm/cli/issues/2226#issuecomment-732475247
         },
       }
-    ).stdout.pipe(process.stdout);
+    );
     spinner.text = `Updated ${packageName} to [${chalk.green(latestVer)}]`;
     spinner.clear();
   } else {
