@@ -4,13 +4,22 @@
   "description": "Serve a directory with Vite",
   "type": "module",
   "bin": {
-    "vite-dir": "go.js"
+    "vite-dir": "src/go.js"
   },
   "scripts": {
-    "start": "node go.js"
+    "start": "node src/go.js"
   },
   "eslintConfig": {
-    "extends": "wesbos"
+    "extends": "wesbos",
+    "rules": {
+      "no-unused-expressions": [
+        "error",
+        {
+          "allowShortCircuit": true,
+          "allowTernary": true
+        }
+      ]
+    }
   },
   "keywords": [],
   "author": "Wes Bos",
@@ -21,8 +30,6 @@
     "compare-versions": "^6.0.0-rc.1",
     "execa": "^6.1.0",
     "latest-version": "^7.0.0",
-    "ora": "^6.1.2",
-    "suppress-experimental-warnings": "^1.1.2",
     "vite": "^4.0.4",
     "vite-plugin-list-directory-contents": "^1.4.3"
   },
