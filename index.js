@@ -9,6 +9,7 @@ const args = argv(process.argv);
 
 // Silent mode for updating, it doesnt run
 if(args.flags.silent) {
+  console.log(`Silent Mode`);
   spinner.stop();
   process.exit(0);
 }

@@ -14,8 +14,8 @@ export async function update() {
   spinner.start();
   spinner.text = 'Ensuring latest version';
   const latestVer = await latestVersion(packageName);
-  if (compareVersions(VERSION, latestVer) === -1) {
-
+  const newerVersionAvailable = compareVersions(VERSION, latestVer) === -1;
+  if (newerVersionAvailable) {
     console.log(`Current version of [${packageName}] is [${chalk.cyan(
       VERSION
     )}] is lower than the latest available version [${chalk.yellow(
@@ -38,16 +38,20 @@ export async function update() {
     console.log(
       `\nAlready on the latest version - [${chalk.yellow(latestVer)}]. Starting`
     );
-    spinner.stop();
+    // await runCurrent();
+      execa('npx', [ `${packageName}`, '--no-check-latest', '--start', ...rawProgramArgs ],
+    { env: { npm_config_yes: 'true' } } );
+
+    // spinner.stop();
     // spinner.clear();
   }
 }
 
-export async function runLatest() {
-  execa(
+export async function runCurrent() {
+  return execa(
     'npx',
     [
-      `${packageName}@latest`,
+      `${packageName}`,
       '--no-check-latest',
       '--start',
       ...rawProgramArgs,
